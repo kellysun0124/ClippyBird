@@ -19,3 +19,6 @@ INSERT INTO IMAGE (IMAGE_ID, USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, 
 (100000000012, 'BadBunnyB3B3', 'db/images/bird13.jpg', '2023-01-13 22:00:00', 'bird box 1', 'Bird', 'bird'),
 (100000000013, 'BadBunnyB3B3', 'db/images/bird14.jpg', '2023-01-14 23:00:00', 'bird box 1', 'Bird', 'bird'),
 (100000000014, 'BadBunnyB3B3', 'db/images/bird15.jpg', '2023-01-15 00:00:00', 'bird box 1', 'Bird', 'bird');
+
+INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', 'test', 'test@test.com');
+
