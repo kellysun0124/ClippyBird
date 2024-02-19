@@ -8,7 +8,10 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => res.render('home'))
-app.get
+app.get('/user-home', (req, res) => res.render('user-home'))
+app.get('/sign-up', (req, res) => res.render('sign-up'))
+app.get('/setup', (req, res) => res.render('setup'))
+
 
 
 
