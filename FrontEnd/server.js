@@ -2,10 +2,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mysql = require('mysql2')
-
+const expressLayouts = require('express-ejs-layouts');
+app.use(expressLayouts);
 
 app.set('view engine', 'ejs')
-
 
 app.get('/', (req, res) => res.render('home'))
 app.get
