@@ -8,3 +8,4 @@ Need to install npm and download the following packages:\
 -ejs\
 -express\
 -nodemon\
+-mysql2\
