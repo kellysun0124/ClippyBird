@@ -42,7 +42,7 @@ app.get('/setup', (req, res) => res.render('setup'))
 //     db.query(sql, [values], (err, data) => {
       
 //         if (err) {
-//             return res.json("Error");
+//            $# return res.json("Error");
 //         }
 //         return res.json(data);
 //     })
