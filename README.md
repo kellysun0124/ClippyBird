@@ -7,6 +7,6 @@ made by Jacob Woods, Rosa Wessel, Kelly Sun, Kevin Maisonet, Ben Clark
 Need to install npm and download the following packages:\
 -ejs\
 -express\
+-express-ejs-layouts\
 -nodemon\
--dotenv\
 -mysql2\
