@@ -12,18 +12,24 @@ app.get('/user-home', (req, res) => res.render('user-home'))
 app.get('/register', (req, res)=> res.render('register'))
 app.get('/setup', (req, res) => res.render('setup'))
 
+useEffect(() => {
+
+    axios.get("http://localhost:3001/posts").then((response) => {
+      setListOfPosts(response.data)
+    });
+
+  }, []);
 
 
-
-// THIS IS HOW WE wouLD CONNECT TO MYSQL DATABASE
+//THIS IS HOW WE wouLD CONNECT TO MYSQL DATABASE
 // const db = mysql.createConnection({
 //     host: "localhost",
 //     user: "root",
 //     password: "root",
-//     database: "next_dbs"
+//     database: "clippy_bird"
 // })
-//
-// CHECK IF CONNECTING TO DATABASE IS SUCCESSFULL
+
+// //CHECK IF CONNECTING TO DATABASE IS SUCCESSFULL
 // db.connect((err) => {
 //     if (err) {
 //         throw err;
