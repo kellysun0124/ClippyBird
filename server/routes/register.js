@@ -1,5 +1,5 @@
 import express from 'express';
-import { getConnection } from '../server.js';
+import { getConnection } from '../server.js'; // Import getConnection function from server.js
 
 const router = express.Router();
 
@@ -10,16 +10,17 @@ router.get('/', async (req, res) => {
         return res.status(400).send('Missing required fields');
     }
 
-    const connection = await getConnection();
+    const connection = await getConnection(); // Call getConnection function to get a database connection
 
-    try { // This checks to see if the username is taken
+    try {
+        // Check if the username is taken
         const [rows] = await connection.execute(
             'SELECT * FROM USER WHERE USERNAME = ?', [userName]
         );
 
-        // If the username was taken it will render the failReg view
+        // If the username was taken, render the failReg view
         if (rows.length > 0) {
-            return res.render('failReg'); // Renders failReg.ejs from the views directory
+            res.status(401).send("your username was taken."); // Renders failReg.ejs from the views directory
         }
 
         // If the username is available, proceed with registration
@@ -33,28 +34,17 @@ router.get('/', async (req, res) => {
             lastname: lastName
         };
 
-        res.send(`
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <title>Login and register form with Node.js, Express.js and MySQL</title>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-            </head>
-            <body>
-                <div class="container">
-                    <h3>Hi, ${req.session.user.firstname} ${req.session.user.lastname}</h3>
-                    <a href="/">Log out</a>
-                </div>
-            </body>
-            </html>
-        `);
+        // Send a response indicating successful registration
+        res.status(201).json({
+            message: "User created Sucessfully)",
+            userId: result.insertId
+        });
+
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send('Internal Server Error');
     } finally {
-        connection.release();
+        connection.release(); // Release the database connection
     }
 });
 
