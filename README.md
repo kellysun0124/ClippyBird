@@ -10,3 +10,5 @@ Need to install npm and download the following packages:\
 -express-ejs-layouts\
 -nodemon\
 -mysql2\
+-axious\
+-cors\
