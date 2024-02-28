@@ -1,13 +1,17 @@
+import cors from 'cors';
+import dotenv from 'dotenv'
 import express from 'express';
 import session from 'express-session';
 import mysql from 'mysql2/promise';
-import cors from 'cors';
 import registerRoute from './routes/register.js';
 import loginRoute from './routes/login.js';
 import usersRoute from './routes/users.js';
+import homepageRoute from './routes/homepage.js';
+
+dotenv.config()
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 // Middleware
 app.use(cors());
@@ -22,10 +26,10 @@ app.use(session({
 
 // Create MySQL connection pool
 const pool = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "11Edward11",
-    database: "clippy_bird"
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
 });
 
 // Define getConnection function
@@ -58,11 +62,12 @@ app.use(async (req, res, next) => {
 app.use('/register', registerRoute);
 app.use('/login', loginRoute);
 app.use('/users', usersRoute);
+app.use('/homepage', homepageRoute);
 
 // Route handler for the root URL
-app.get('/', (req, res) => {
-    res.redirect('/register'); // Redirect to the registration page
-});
+// app.get('/', (req, res) => {
+//     res.redirect('/register'); // Redirect to the registration page
+// });
 
 // Start server
 app.listen(port, () => {
