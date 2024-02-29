@@ -15,26 +15,22 @@ router.get('/', async (req, res) => {
         );
 
         if (rows.length > 0) {
-            res.send(`
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <title>Login and register form with Node.js, Express.js and MySQL</title>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-            </head>
-            <body>
-                <div class="container">
-                    <h3>Hi, ${req.session.user.firstname} ${req.session.user.lastname}</h3>
-                    <a href="/">Log out</a>
-                </div>
-            </body>
-            </html>
-            `);
+            // Set session user
+            req.session.user = {
+                firstname: rows[0].FIRST_NAME,
+                lastname: rows[0].LAST_NAME
+            };
 
+            res.status(200).json({
+                message: "User Successfully logged in",
+                firstname: rows[0].FIRST_NAME,
+                lastname: rows[0].LAST_NAME
+            });
         } else {
-            res.render(__dirname + 'failLog');
+            // Send a response indicating incorrect username or password
+            res.status(401).json({
+                message: "Username or password was incorrect!"
+            });
         }
     } catch (error) {
         console.log(error);
