@@ -7,6 +7,7 @@ import registerRoute from './routes/register.js';
 import loginRoute from './routes/login.js';
 import usersRoute from './routes/users.js';
 import homepageRoute from './routes/homepage.js';
+import insertRoute from './routes/insert.js';
 
 dotenv.config()
 
@@ -63,6 +64,7 @@ app.use('/register', registerRoute);
 app.use('/login', loginRoute);
 app.use('/users', usersRoute);
 app.use('/homepage', homepageRoute);
+app.use('/insert', insertRoute);
 
 // Route handler for the root URL
 // app.get('/', (req, res) => {

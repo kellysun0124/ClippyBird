@@ -10,11 +10,6 @@ const readUsersImagesQuery = `
     WHERE USER_ID = ?;
 `
 
-const createImageQuery = `
-    INSERT INTO IMAGE (USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
-    VALUES (?, ?, ?, ?, ?, ?);
-`
-
 const updateImageNameQuery = `
     UPDATE IMAGE
     SET IMAGE_NAME = ?
@@ -52,27 +47,27 @@ router.get("/:USER_ID", async (req, res) => {
 
 // create an image
 // -> homepage/username
-router.post("/:USER_ID", async (req, res) => {
-    const { USER_ID } = req.params;
-    const { FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES } = req.body;
+// router.post("/:USER_ID", async (req, res) => {
+//     const { USER_ID } = req.params;
+//     const { FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES } = req.body;
     
-    try {
-        const connection = await getConnection();
-        const [result] = await connection.execute(
-            createImageQuery,
-            [USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
-        );
-        connection.release();
+//     try {
+//         const connection = await getConnection();
+//         const [result] = await connection.execute(
+//             createImageQuery,
+//             [USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
+//         );
+//         connection.release();
 
-        res.status(201).json({
-            message: "Image created successfully",
-            imageId: result.insertId
-        });
-    } catch (error) {
-        console.error("Error creating image: ", error);
-        res.status(500).json({ error: "Internal Server Error"});
-    }
-});
+//         res.status(201).json({
+//             message: "Image created successfully",
+//             imageId: result.insertId
+//         });
+//     } catch (error) {
+//         console.error("Error creating image: ", error);
+//         res.status(500).json({ error: "Internal Server Error"});
+//     }
+// });
 
 // update an images location
 // -> homepage/username/100000000016/IMAGE_LOCATION
