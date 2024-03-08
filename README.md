@@ -12,3 +12,4 @@ Need to install npm and download the following packages:\
 -mysql2\
 -axious\
 -cors\
+-npm install -g @angular/cli 
