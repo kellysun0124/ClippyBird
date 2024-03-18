@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'instructions', component: InstructionsComponent},
   { path: 'user-birds', component: UserBirdsComponent},
 
-  //redirect to home
+  //redirects to home by default
   { path: '**', redirectTo: ''}
 ];
 /* @NgModule({
