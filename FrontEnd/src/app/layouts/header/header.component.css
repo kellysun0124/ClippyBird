@@ -1,0 +1,33 @@
+/* Styles for the <p> element */
+p {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+/* Styles for the navigation bar */
+.navbar {
+  background-color: #0d6ba9; /* Dark background color */
+  color: rgb(255, 255, 255); /* Text color */
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none; /* Removes default list style */
+}
+
+.nav-item {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #fff30de8; /* Changes color of Login, Register, Home, etc. text */
+}
+
+.nav-item:hover {
+  background-color: #ffffff; /* Darker background color on hover */
+}
+
+/* Additional styles for the navbar-actions */
+.navbar-actions {
+  margin-left: auto; /* Pushes the actions to the right */
+}
