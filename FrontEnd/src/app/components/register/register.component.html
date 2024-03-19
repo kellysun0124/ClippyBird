@@ -1,1 +1,29 @@
 <h1>Register</h1>
+<form (ngSubmit)="submitRegistration()">
+  <div class="fields">
+    <div class="field half">
+      <label for="firstname">First</label>
+      <input type="text" name="firstname" [(ngModel)]="firstname" id="firstname">
+    </div>
+
+    <div class="field half">
+      <label for="lastname">Last</label>
+      <input type="text" name="lastname" [(ngModel)]="lastname" id="lastname">
+    </div>
+
+    <div class="field half">
+      <label for="username">Username</label>
+      <input type="text" name="username" [(ngModel)]="username" id="username">
+    </div>
+
+    <div class="field half">
+      <label for="password">password</label>
+      <input type="text" name="password" [(ngModel)]="password" id="password">
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="text" name="email" [(ngModel)]="username" id="Email">
+    </div>
+  </div>
+</form>
