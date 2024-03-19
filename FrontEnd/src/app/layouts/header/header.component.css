@@ -1,24 +1,25 @@
 /* Styles for the navigation bar */
 .navbar {
-  background-color: #0d6ba9; /* Dark background color */
-  color: rgb(255, 255, 255); /* Text color */
+  background-color:#005365 ; /* Dark background color */
+
 }
 
 .navbar-nav {
   display: flex;
   flex-direction: row;
   list-style-type: none; /* Removes default list style */
+
 }
 
 .nav-item { /* Changes Login, Register, Home, etc. text */
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #fff30de8;
+  color: #dcc963;
   font-size: 20px;
 }
 
 .nav-item:hover {
-  background-color: #ffc89f; /* Darker background color on hover */
+  color: #c29400; /* I made it lighter background color on hover */
 }
 
 /* Additional styles for the navbar-actions */
