@@ -1,7 +1,6 @@
 # ClippyBird
-2024 Capstone project
+Open Source Smart Bird Feeder.
 
-made by Jacob Woods, Rosa Wessel, Kelly Sun, Kevin Maisonet, Ben Clark
 
 
 Need to install npm and download the following packages:\
@@ -13,3 +12,7 @@ Need to install npm and download the following packages:\
 -axious\
 -cors\
 -npm install -g @angular/cli ** once that package is installed, will only have to do npm install in my-app 
+
+
+2024 Capstone project
+made by Jacob Woods, Rosa Wessel, Kelly Sun, Kevin Maisonet, Ben Clark
