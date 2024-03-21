@@ -4,14 +4,13 @@ Open Source Smart Bird Feeder.
 
 
 Need to install npm and download the following packages:\
--ejs\
+-npm
 -express\
--express-ejs-layouts\
 -nodemon\
 -mysql2\
 -axious\
 -cors\
--npm install -g @angular/cli ** once that package is installed, will only have to do npm install in my-app 
+-npm install -g @angular/cli ** once that package is installed, commence npm install in my-app 
 
 
 2024 Capstone project
