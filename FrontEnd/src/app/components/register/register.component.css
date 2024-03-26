@@ -1,3 +1,17 @@
+.mat-card{
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+color: #eab676
+}
+
+
+
 input[type="firstname"],
 input[type="lastname"],
 input[type="username"],
@@ -6,14 +20,11 @@ input[type="email"],
 select {
   height: 2.75rem;
 }
+
+
 input[type="text"],
 input[type="password"],
-input[type="email"],
-input[type="tel"],
-select,
-textarea {
-
-  background-color: #abdbe3;
+select, textarea {
   border-radius: 4px;
   color: inherit;
   display: block;
@@ -22,6 +33,9 @@ textarea {
   text-decoration: none;
   width: 25%
 }
+
+
+
 
 /*this is form fields for all this needs to be changed*/
 form > .fields {

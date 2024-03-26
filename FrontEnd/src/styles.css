@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* adds gradiant background, also adds background color if browser doesn't support graients*/
 html, body {
   height: 100%;
   background-color:#005365; /* For browsers that do not support gradients */
@@ -8,10 +7,11 @@ html, body {
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+/* for all titles in each page*/
 .title {
+  padding-top: 10%;
   text-align: center;
+  color: #e28743;
 }
 
-.mat-card{
-  background-color: rgba(0, 0, 0, 0.5);
-}
+
