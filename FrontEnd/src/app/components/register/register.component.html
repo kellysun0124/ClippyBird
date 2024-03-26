@@ -1,26 +1,34 @@
-<h1>Register</h1>
-<form (ngSubmit)="submitRegistration()">
-  <div class="fields">
-    <div class="field half">
-      <label for="firstname">First</label>
-      <input type="text" name="firstname" [(ngModel)]="firstname" id="firstname">
-      <label for="lastname">Last</label>
-      <input type="text" name="lastname" [(ngModel)]="lastname" id="lastname">
-    </div>
+<h1 class="title">Register</h1>
 
-    <div class="field half">
-      <label for="username">Username</label>
-      <input type="text" name="username" [(ngModel)]="username" id="username">
-    </div>
+<mat-card class="mat-card">
 
-    <div class="field half">
-      <label for="password">password</label>
-      <input type="text" name="password" [(ngModel)]="password" id="password">
-    </div>
+  <form (ngSubmit)="submitRegistration()">
+    <div class="fields">
+      <div class="field half">
+        <label for="firstname">First</label>
+        <input type="text" name="firstname" [(ngModel)]="firstname" id="firstname">
+      </div>
 
-    <div class="field">
-      <label for="email">Email</label>
-      <input type="text" name="email" [(ngModel)]="username" id="Email">
+      <div class="field half">
+        <label for="lastname">Last</label>
+        <input type="text" name="lastname" [(ngModel)]="lastname" id="lastname">
+      </div>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" name="username" [(ngModel)]="username" id="username">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="text" name="password" [(ngModel)]="password" id="password">
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" [(ngModel)]="email" id="email">
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+
+</mat-card>
