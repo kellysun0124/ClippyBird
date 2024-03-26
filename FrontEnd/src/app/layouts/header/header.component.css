@@ -1,20 +1,19 @@
 /* Styles for the navigation bar */
-.navbar {
-  background-color:#005365 ; /* Dark background color */
-
-}
 
 .navbar-nav {
   display: flex;
   flex-direction: row;
   list-style-type: none; /* Removes default list style */
-
+  display: flex;
+  justify-content: center;
 }
+
+
 
 .nav-item { /* Changes Login, Register, Home, etc. text */
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #dcc963;
+  color: #eeeee4;
   font-size: 20px;
 }
 
