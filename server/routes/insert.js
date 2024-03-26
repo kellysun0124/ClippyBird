@@ -8,6 +8,12 @@ const createImageQuery = `
     VALUES (?, ?, ?, ?, ?, ?);
 `
 
+const userExistsQuery = `
+        SELECT COUNT(*) AS USER_EXISTS
+        FROM USER
+        WHERE USER_ID = ?;
+`       
+
 // create an image
 // -> insert/{username}
 router.post("/:USER_ID", async (req, res) => {
@@ -16,6 +22,13 @@ router.post("/:USER_ID", async (req, res) => {
     
     try {
         let SPECIES = "";
+
+        const userExists = await checkUserExists(USER_ID);
+        if (!userExists) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
 
         // ML model will go here
         // Classifies species contained in newly created image, if image species is classified
@@ -64,5 +77,16 @@ router.post("/:USER_ID", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error"});
     }
 });
+
+const checkUserExists = async (userId) => {
+    const connection = await getConnection();
+    const [result] = await connection.execute(
+        userExistsQuery,
+        [userId]
+    );
+    connection.release();
+
+    return result[0].userExists > 0; 
+}
 
 export default router;

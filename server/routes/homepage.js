@@ -28,6 +28,11 @@ const updateImageSeciesQuery = `
     WHERE USER_ID = ? AND IMAGE_ID = ?;
 `
 
+const deleteImageQuery = `
+    DELETE FROM IMAGE
+    WHERE USER_ID = ? AND IMAGE_ID = ?;
+`
+
 // get all images from a user
 // -> homepage/username
 router.get("/:USER_ID", async (req, res) => {
@@ -44,30 +49,6 @@ router.get("/:USER_ID", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error"});
     }
 });
-
-// create an image
-// -> homepage/username
-// router.post("/:USER_ID", async (req, res) => {
-//     const { USER_ID } = req.params;
-//     const { FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES } = req.body;
-    
-//     try {
-//         const connection = await getConnection();
-//         const [result] = await connection.execute(
-//             createImageQuery,
-//             [USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
-//         );
-//         connection.release();
-
-//         res.status(201).json({
-//             message: "Image created successfully",
-//             imageId: result.insertId
-//         });
-//     } catch (error) {
-//         console.error("Error creating image: ", error);
-//         res.status(500).json({ error: "Internal Server Error"});
-//     }
-// });
 
 // update an images location
 // -> homepage/username/100000000016/IMAGE_LOCATION
@@ -143,11 +124,6 @@ router.patch("/:USER_ID/:IMAGE_ID/SPECIES", async (req, res) => {
     }
 
 });
-
-const deleteImageQuery = `
-    DELETE FROM IMAGE
-    WHERE USER_ID = ? AND IMAGE_ID = ?;
-`
 
 // delete image
 // -> homepage/username/100000000016

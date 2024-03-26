@@ -1,4 +1,4 @@
-INSERT INTO USER (FIRST_NAME, LAST_NAME, USERNAME, EMAIL, PASSWORD) 
+INSERT INTO USER (FIRST_NAME, LAST_NAME, USER_ID, EMAIL, PASSWORD) 
 VALUES 
 ('John', 'Boyguy', 'birdlovingdude', 'birdlovingdude@gmail.com', 'password123'),
 ('Girly', 'Teengirl', 'farawaysville', 'farawaysville@gmail.com', 'password456'),
