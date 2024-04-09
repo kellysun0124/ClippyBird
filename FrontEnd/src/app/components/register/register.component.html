@@ -3,32 +3,49 @@
 <mat-card class="mat-card">
 
   <form (ngSubmit)="submitRegistration()">
-    <div class="fields">
-      <div class="field half">
-        <label for="firstname">First</label>
-        <input type="text" name="firstname" [(ngModel)]="firstname" id="firstname">
-      </div>
 
-      <div class="field half">
-        <label for="lastname">Last</label>
-        <input type="text" name="lastname" [(ngModel)]="lastname" id="lastname">
-      </div>
+      <ul style="list-style-type:none;">
+          <div>
+            <li>First</li>
+            <div class="inputboxes">
+              <li><input type="text" name="firstname" [(ngModel)]="firstname" id="firstname"></li>
+            </div>
 
-      <div class="field">
-        <label for="username">Username</label>
-        <input type="text" name="username" [(ngModel)]="username" id="username">
-      </div>
+          </div>
 
-      <div class="field">
-        <label for="password">Password</label>
-        <input type="text" name="password" [(ngModel)]="password" id="password">
-      </div>
+          <div>
+            <li>Last</li>
+            <li><input type="text" name="lastname" [(ngModel)]="lastname" id="lastname">
+            </li>
+          </div>
 
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="text" name="email" [(ngModel)]="email" id="email">
-      </div>
-    </div>
+          <div>
+            <li>Username</li>
+            <li><input type="text" name="username" [(ngModel)]="username" id="username">
+            </li>
+          </div>
+
+          <div>
+            <li>Password</li>
+            <li><input type="text" name="password" [(ngModel)]="password" id="password">
+            </li>
+          </div>
+
+          <div>
+            <li>Email</li>
+            <li><input type="text" name="email" [(ngModel)]="email" id="email">
+            </li>
+          </div>
+
+
+        <div>
+          <br>
+          <li id="regButton">  <button type="submit">Login</button>
+            <a class="nav-item nav-link custom-link" routerLink="/login">Already have an account? Login here!</a>
+          </li>
+        </div>
+      </ul>
+
   </form>
 
 </mat-card>

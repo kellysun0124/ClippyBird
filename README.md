@@ -8,7 +8,7 @@ Need to install npm and download the following packages:\
 -express\
 -nodemon\
 -mysql2\
--axious\
+-axios\
 -cors\
 -npm install -g @angular/cli ** once that package is installed, commence npm install in my-app 
 
