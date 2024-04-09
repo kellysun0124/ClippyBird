@@ -15,17 +15,19 @@ router.get('/', async (req, res) => {
     try {
         // Check if the username is taken
         const [rows] = await connection.execute(
-            'SELECT * FROM USER WHERE USERNAME = ?', [userName]
+            'SELECT * FROM USER WHERE USER_ID = ?', [userName]
         );
 
         // If the username was taken, render the failReg view
         if (rows.length > 0) {
-            res.status(401).send("your username was taken."); // Renders failReg.ejs from the views directory
+            return res.status(401).json({
+                error: "Username already taken. Please choose a different username."
+            }); // Renders failReg.ejs from the views directory
         }
 
         // If the username is available, proceed with registration
         const [result] = await connection.execute(
-            'INSERT INTO USER (FIRST_NAME, LAST_NAME, USERNAME, EMAIL, PASSWORD) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO USER (FIRST_NAME, LAST_NAME, USER_ID, EMAIL, PASSWORD) VALUES (?, ?, ?, ?, ?)',
             [firstName, lastName, userName, email, password]
         );
 
