@@ -14,5 +14,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #e28743;
 }
 
+/* Phone media queries */
+@media screen and (min-width: 360px) and (max-width: 800px){
+  .mat-card{
+    font-size: 15px;
+  }
+
+}
 
 

@@ -25,3 +25,14 @@
 .navbar-actions {
   margin-left: auto; /* Pushes the actions to the right */
 }
+
+/* Phone media queries */
+@media screen and (min-width: 360px) and (max-width: 800px) {
+  .navbar-nav {
+    float: none;
+    width: 100%;
+  }
+  .nav-item{
+    font-size: 14px;
+  }
+}
