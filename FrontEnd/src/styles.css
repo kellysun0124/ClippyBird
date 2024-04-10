@@ -19,6 +19,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .mat-card{
     font-size: 15px;
   }
+  p{
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+/* Tablet media queries */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+}
+
+/* Desktop media queries */
+@media screen and (min-width: 1080px) and (max-width: 1920px){
 
 }
 

@@ -33,6 +33,16 @@
     width: 100%;
   }
   .nav-item{
-    font-size: 14px;
+    font-size: 16px;
   }
+}
+
+/* Tablet media queries */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+}
+
+/* Desktop media queries */
+@media screen and (min-width: 1080px) and (max-width: 1920px){
+
 }
