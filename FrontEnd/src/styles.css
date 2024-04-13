@@ -1,4 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/* adds gradiant background, also adds background color if browser doesn't support graients*/
+html, body {
+  height: 100%;
+  background-color:#005365; /* For browsers that do not support gradients */
+  background-image: linear-gradient(#005365, #abdbe3);
+}
 
-html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* for all titles in each page*/
+.title {
+  padding-top: 10%;
+  text-align: center;
+  color: #e28743;
+}
+
+/* Phone media queries */
+@media screen and (min-width: 360px) and (max-width: 800px){
+  .mat-card{
+    font-size: 15px;
+  }
+  p{
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+/* Tablet media queries */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+}
+
+/* Desktop media queries */
+@media screen and (min-width: 1080px) and (max-width: 1920px){
+
+}
+
+

@@ -1,3 +1,31 @@
-<h1>Login</h1>
+<h1 class="title">Login</h1>
+
+<mat-card class="mat-card">
+  <form (ngSubmit)="submitLogin()">
+    <ul style="list-style-type:none;">
+      <li>Username</li>
+      <li>  <input type="text" name="username" [(ngModel)]="username" id="Username">    </li>
+      <li>Password</li>
+      <li>  <input type="password" name="password" [(ngModel)]="password" id="Password">    </li>
+      <br>
+      <li id="loginandreg">  <button type="submit">Login</button>
+        <a class="nav-item nav-link custom-link" routerLink="/register">Don't have an account? Register here!</a>
+      </li>
+    </ul>
+  </form>
+
+</mat-card>
 
 
+
+
+
+<!-- <mat-card>
+  <mat-card-content>
+    <textarea matInput [(ngModel)]="username" id="username"></textarea>
+    <textarea matInput [(ngModel)]="password" id="password"></textarea>
+
+    <button mat-raised-button color="primary" (click)="submitLogin()" id="submitbutton">Submit</button>
+  </mat-card-content>
+
+</mat-card>> -->

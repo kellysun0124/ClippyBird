@@ -1,0 +1,33 @@
+.mat-card{
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  color: #eab676
+}
+
+.custom-link{
+  padding-left: 5px;
+  color: white;
+}
+
+.inputboxes{
+  justify-content: center;
+  align-content: center;
+}
+
+
+
+
+
+
+/* we need to make one for each screen size we want
+so we might need to play around here and see what looks good*/
+@media screen and (max-width: 480px) {
+
+
+}

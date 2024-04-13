@@ -1,0 +1,18 @@
+
+
+.mat-card{
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  color: #eab676
+}
+
+.custom-link{
+  padding-left: 5px;
+  color: white;
+}

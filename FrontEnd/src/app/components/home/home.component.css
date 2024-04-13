@@ -1,0 +1,10 @@
+.mat-card{
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p{
+  color: #eab676
+ }
