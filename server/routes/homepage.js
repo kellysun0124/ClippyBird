@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+import express from 'express'
+import { getConnection } from '../server.js';
+
+
+const router = express.Router()
+
+=======
 import dotenv from 'dotenv'
 import express from 'express'
 import mysql from 'mysql2/promise'
@@ -14,17 +22,21 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+>>>>>>> main
 
 const readUsersImagesQuery = `
     SELECT * FROM IMAGE
     WHERE USER_ID = ?;
 `
 
+<<<<<<< HEAD
+=======
 const createImageQuery = `
     INSERT INTO IMAGE (USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
     VALUES (?, ?, ?, ?, ?, ?);
 `
 
+>>>>>>> main
 const updateImageNameQuery = `
     UPDATE IMAGE
     SET IMAGE_NAME = ?
@@ -43,15 +55,30 @@ const updateImageSeciesQuery = `
     WHERE USER_ID = ? AND IMAGE_ID = ?;
 `
 
+<<<<<<< HEAD
+const deleteImageQuery = `
+    DELETE FROM IMAGE
+    WHERE USER_ID = ? AND IMAGE_ID = ?;
+`
+
+=======
+>>>>>>> main
 // get all images from a user
 // -> homepage/username
 router.get("/:USER_ID", async (req, res) => {
     const { USER_ID } = req.params;
     
     try {
+<<<<<<< HEAD
+        const connection = await getConnection();
+        const [rows] = await connection.execute(readUsersImagesQuery, [USER_ID]);
+        connection.release();
+
+=======
         const connection = await pool.getConnection();
         const [rows] = await connection.query(readUsersImagesQuery, [USER_ID]);
         connection.release();
+>>>>>>> main
         res.json(rows);
     } catch (error) {
         console.error("Error retrieving images: ", error);
@@ -59,6 +86,8 @@ router.get("/:USER_ID", async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
+=======
 // create an image
 // -> homepage/username
 router.post("/:USER_ID", async (req, res) => {
@@ -82,6 +111,7 @@ router.post("/:USER_ID", async (req, res) => {
     }
 });
 
+>>>>>>> main
 // update an images location
 // -> homepage/username/100000000016/IMAGE_LOCATION
 router.patch("/:USER_ID/:IMAGE_ID/IMAGE_LOCATION", async (req, res) => {
@@ -89,8 +119,13 @@ router.patch("/:USER_ID/:IMAGE_ID/IMAGE_LOCATION", async (req, res) => {
     const { IMAGE_LOCATION } = req.body;
 
     try {
+<<<<<<< HEAD
+        const connection = await getConnection();
+        const [result] = await connection.execute(
+=======
         const connection = await pool.getConnection();
         const [result] = await connection.query(
+>>>>>>> main
             updateImageLocationQuery,
             [IMAGE_LOCATION, USER_ID, IMAGE_ID]
         );
@@ -114,8 +149,13 @@ router.patch("/:USER_ID/:IMAGE_ID/IMAGE_NAME", async (req, res) => {
     const { IMAGE_NAME } = req.body;
 
     try {
+<<<<<<< HEAD
+        const connection = await getConnection();
+        const [result] = await connection.execute(
+=======
         const connection = await pool.getConnection();
         const [result] = await connection.query(
+>>>>>>> main
             updateImageNameQuery,
             [IMAGE_NAME, USER_ID, IMAGE_ID]
         );
@@ -139,8 +179,13 @@ router.patch("/:USER_ID/:IMAGE_ID/SPECIES", async (req, res) => {
     const { SPECIES } = req.body;
 
     try {
+<<<<<<< HEAD
+        const connection = await getConnection();
+        const [result] = await connection.execute(
+=======
         const connection = await pool.getConnection();
         const [result] = await connection.query(
+>>>>>>> main
             updateImageSeciesQuery,
             [SPECIES, USER_ID, IMAGE_ID]
         );
@@ -157,19 +202,27 @@ router.patch("/:USER_ID/:IMAGE_ID/SPECIES", async (req, res) => {
 
 });
 
+<<<<<<< HEAD
+=======
 const deleteImageQuery = `
     DELETE FROM IMAGE
     WHERE USER_ID = ? AND IMAGE_ID = ?;
 `
 
+>>>>>>> main
 // delete image
 // -> homepage/username/100000000016
 router.delete("/:USER_ID/:IMAGE_ID", async (req, res) => {
     const { USER_ID, IMAGE_ID } = req.params;
 
     try {
+<<<<<<< HEAD
+        const connection = await getConnection();
+        const [result] = await connection.execute(
+=======
         const connection = await pool.getConnection();
         const [result] = await connection.query(
+>>>>>>> main
             deleteImageQuery,
             [USER_ID, IMAGE_ID]
         );

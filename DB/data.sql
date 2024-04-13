@@ -1,7 +1,8 @@
-INSERT INTO USER (USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, PASSWORD) VALUES
-('BirdLoverManBoy', 'John', 'Boyguy', 'birdlovingdude@gmail.com', '123-456-7890', '12345'),
-('GirlyTeenGirl147', 'Girly', 'Teengirl', 'farawaysville@gmail.com', '987-654-3210', 'notspunchbob'),
-('BadBunnyB3B3', 'Benito', 'Matinez', 'conejomalo@gmail.com', '787-123-4567', 'unveranosinti');
+INSERT INTO USER (FIRST_NAME, LAST_NAME, USER_ID, EMAIL, PASSWORD) 
+VALUES 
+('John', 'Boyguy', 'birdlovingdude', 'birdlovingdude@gmail.com', 'password123'),
+('Girly', 'Teengirl', 'farawaysville', 'farawaysville@gmail.com', 'password456'),
+('Benito', 'Matinez', 'conejomalo', 'conejomalo@gmail.com', 'password789');
 
 INSERT INTO IMAGE (IMAGE_ID, USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) VALUES
 (100000000000, 'BirdLoverManBoy', 'db/images/bird1.jpg', '2023-01-01 10:00:00', 'bird box 1', 'Bird', 'bird'),
@@ -19,3 +20,6 @@ INSERT INTO IMAGE (IMAGE_ID, USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, 
 (100000000012, 'BadBunnyB3B3', 'db/images/bird13.jpg', '2023-01-13 22:00:00', 'bird box 1', 'Bird', 'bird'),
 (100000000013, 'BadBunnyB3B3', 'db/images/bird14.jpg', '2023-01-14 23:00:00', 'bird box 1', 'Bird', 'bird'),
 (100000000014, 'BadBunnyB3B3', 'db/images/bird15.jpg', '2023-01-15 00:00:00', 'bird box 1', 'Bird', 'bird');
+
+
+
