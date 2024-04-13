@@ -1,7 +1,15 @@
 import express from 'express'
-import { getConnection } from '../server.js';
+import fs from 'fs';
+import { getConnection } from '../server.js'
+import path from 'path'
+import * as tf from '@tensorflow/tfjs' 
+import * as tfn from '@tensorflow/tfjs-node'
 
 const router = express.Router()
+
+//////////////////////////////////// !!! WILL NEED TO CHANGE ONCE HOSTED!!! ///////////////////////////////////////
+const model_path = "/Users/kevin/Documents/college/sp24/capstone/codebase/ClippyBird/server/js_model/model.json" //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createImageQuery = `
     INSERT INTO IMAGE (USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
@@ -30,33 +38,34 @@ router.post("/:USER_ID", async (req, res) => {
             });
         }
 
-        // ML model will go here
-        // Classifies species contained in newly created image, if image species is classified
-        // as "not a bird", then the image will not be inserted into the database
-        const pythonModel = (FILE_LOCATION, IMAGE_NAME) => {
-            const image = FILE_LOCATION + IMAGE_NAME;
-            
-            if (image == "../images/notbird.jpg") {
-                SPECIES = "not a bird";
-            } else if (image == "../images/mayber.jpg") {
-                SPECIES = "possible bird";
-            } else {
-                SPECIES = "bird"
-            }
-
-            console.log(`MODEL OUTPUT: ${SPECIES}`)
+        async function loadModel() {
+            const handler = tfn.io.fileSystem(model_path);
+            const model = await tf.loadLayersModel(handler);
+            return model;
         }
-        
-        // calls the classification method
-        pythonModel(FILE_LOCATION, IMAGE_NAME)
 
-        // returns 422 code if species is not classified as a bird
-        if (SPECIES == "not a bird") {
-            console.log(`IMAGE SENT BY BIRD BOX WAS NOT INSERTED`)
+        async function classifyImage(model, directory, image_name) {
+            const fileLocation = path.join(directory, image_name); // gets path to the image
+            const imageBuffer = fs.readFileSync(fileLocation);
+            const image = tfn.node.decodeImage(imageBuffer);
+            const resizedImage = tf.image.resizeBilinear(image, [224, 224]); // resizes to proper size of 224, 224, 3
+            const normalizedImage = resizedImage.toFloat().div(tf.scalar(255));
+            const reshapedImage = normalizedImage.expandDims(0);
+            const prediction = await model.predict(reshapedImage).dataSync()[0];
+            console.log(`Model prediction of image ${image_name}: ${prediction}`)
+            return prediction;
+        }
 
+        const model = await loadModel();
+
+        const prediction = await classifyImage(model, FILE_LOCATION, IMAGE_NAME);
+
+        if (prediction >= 0.5) {
+            SPECIES = "Bird"
+        } else {
             return res.status(422).json({
                 message: "Image does not contain a bird"
-            });
+            })
         }
 
         // opens connection to the database, inserts image, then releases connection
@@ -86,7 +95,7 @@ const checkUserExists = async (userId) => {
     );
     connection.release();
 
-    return result[0].userExists > 0; 
+    return result[0].USER_EXISTS > 0; 
 }
 
 export default router;
