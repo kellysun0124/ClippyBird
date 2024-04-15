@@ -1,8 +1,8 @@
-INSERT INTO USER (FIRST_NAME, LAST_NAME, USER_ID, EMAIL, PASSWORD) 
+INSERT INTO USER (USER_ID, FIRST_NAME, LAST_NAME, PHONE, EMAIL, PASSWORD) 
 VALUES 
-('John', 'Boyguy', 'birdlovingdude', 'birdlovingdude@gmail.com', 'password123'),
-('Girly', 'Teengirl', 'farawaysville', 'farawaysville@gmail.com', 'password456'),
-('Benito', 'Matinez', 'conejomalo', 'conejomalo@gmail.com', 'password789');
+('birdlovingdude', 'John', 'Boyguy', 'birdlovingdude@gmail.com', '787-123-4567','password123'),
+('GirlyTeenGirl147', 'Girly', 'Teengirl', 'farawaysville@gmail.com', '123-456-7890', 'password456'),
+('BadBunnyB3B3' ,'Benito', 'Matinez', 'conejomalo@gmail.com', '098-765-4321', 'password789');
 
 INSERT INTO IMAGE (IMAGE_ID, USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) VALUES
 (100000000000, 'BirdLoverManBoy', 'db/images/bird1.jpg', '2023-01-01 10:00:00', 'bird box 1', 'Bird', 'bird'),
