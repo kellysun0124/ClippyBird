@@ -2,7 +2,7 @@ import express from 'express'
 import fs from 'fs';
 import { getConnection } from '../server.js'
 import path from 'path'
-import * as tf from '@tensorflow/tfjs' 
+//import * as tf from '@tensorflow/tfjs' 
 import * as tfn from '@tensorflow/tfjs-node'
 
 const router = express.Router()
@@ -40,7 +40,7 @@ router.post("/:USER_ID", async (req, res) => {
 
         async function loadModel() {
             const handler = tfn.io.fileSystem(model_path);
-            const model = await tf.loadLayersModel(handler);
+            const model = await tfn.loadLayersModel(handler);
             return model;
         }
 
@@ -48,8 +48,8 @@ router.post("/:USER_ID", async (req, res) => {
             const fileLocation = path.join(directory, image_name); // gets path to the image
             const imageBuffer = fs.readFileSync(fileLocation);
             const image = tfn.node.decodeImage(imageBuffer);
-            const resizedImage = tf.image.resizeBilinear(image, [224, 224]); // resizes to proper size of 224, 224, 3
-            const normalizedImage = resizedImage.toFloat().div(tf.scalar(255));
+            const resizedImage = tfn.image.resizeBilinear(image, [224, 224]); // resizes to proper size of 224, 224, 3
+            const normalizedImage = resizedImage.toFloat().div(tfn.scalar(255));
             const reshapedImage = normalizedImage.expandDims(0);
             const prediction = await model.predict(reshapedImage).dataSync()[0];
             console.log(`Model prediction of image ${image_name}: ${prediction}`)

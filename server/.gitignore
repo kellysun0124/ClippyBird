@@ -1,7 +1,4 @@
 .env
-<<<<<<< HEAD
 node_modules
 .DS_Store
-=======
-node_modules
->>>>>>> main
+package-lock.json

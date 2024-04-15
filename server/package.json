@@ -1,24 +1,5 @@
-<<<<<<< HEAD
 {
-<<<<<<<< HEAD:server/package.json
   "name": "server",
-========
-  "name": "clippybird",
->>>>>>>> main:package.json
-  "version": "1.0.0",
-  "description": "2024 Capstone project",
-  "main": "index.js",
-  "scripts": {
-<<<<<<<< HEAD:server/package.json
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-========
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>>> main:package.json
-=======
-
-{
-  "name": "frontend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -26,33 +7,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
->>>>>>> main
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<<< HEAD:server/package.json
-=======
     "@tensorflow/tfjs": "^4.17.0",
     "@tensorflow/tfjs-node": "^4.17.0",
->>>>>>> d2135966d027f562c397204e333423044e623245
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "express-session": "^1.18.0",
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0"
-========
-    "@angular/cli": "^17.2.3"
->>>>>>>> main:package.json
-=======
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.4",
-    "express": "^4.18.2",
-    "mysql2": "^3.9.1",
-    "nodemon": "^3.0.3"
->>>>>>> main
   }
 }

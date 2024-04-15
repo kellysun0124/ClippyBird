@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
         // Send a response indicating successful registration
         res.status(201).json({
             message: "User created Sucessfully)",
-            userId: result.insertId
+            username: userName
         });
 
     } catch (error) {
