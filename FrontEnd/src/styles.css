@@ -25,7 +25,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-align: center;
     padding: 25px;
     box-sizing: border-box; /* Ensure padding is included in the width */
-    line-height: -9px;
   }
 }
 
@@ -45,7 +44,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Desktop media queries */
 @media screen and (min-width: 1080px) and (max-width: 1920px){
-
+  h1 {
+    font-size: 36px;
+  }
+  p{
+    font-size: 48px;
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
 }
 
 
