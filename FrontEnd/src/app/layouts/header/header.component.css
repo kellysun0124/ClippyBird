@@ -29,11 +29,15 @@
 /* Phone media queries */
 @media screen and (min-width: 360px) and (max-width: 800px) {
   .navbar-nav {
-    float: none;
     width: 100%;
+    text-align: center;
+    padding: 0; /* Remove default padding */
   }
-  .nav-item{
-    font-size: 16px;
+  .nav-item {
+    display: inline-block; /* Ensure each nav item is on its own line */
+    font-size: 18px;
+    margin: 0; /* Reset margin */
+    padding: 10px 9px; /* Add padding for spacing between words */
   }
 }
 
