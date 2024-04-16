@@ -42,14 +42,3 @@ li {
     font-size: 28px;
   }
 }
-
-
-
-
-
-/* we need to make one for each screen size we want
-so we might need to play around here and see what looks good*/
-@media screen and (max-width: 480px) {
-
-
-}
