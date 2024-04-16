@@ -34,7 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     FormsModule,
     MatCardModule,
-
+    MatButtonModule
 
   ],
   providers: [
