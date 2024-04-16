@@ -17,6 +17,7 @@ li {
   color: white;
 }
 
+
 @media screen and (min-width: 768px) and (max-width: 1366px){
   .title {
     font-size: 48px;
@@ -29,10 +30,14 @@ li {
     box-sizing: border-box; /* Ensure padding is included in the width */
   }
   li {
-    font-size: 28px;
-    padding: 2px;
+    font-size: 32px;
+    padding: 5px;
   }
-  .inputboxes{
-    font-size: large;
+  .nav-item {
+    font-size: 28px;
+  }
+  button {
+    font-size: 28px;
   }
 }
+

@@ -67,7 +67,7 @@
     display: inline-block; /* Ensure each nav item is on its own line */
     font-size: 36px;
     margin: 0; /* Reset margin */
-    padding: 20px 35px; /* Add padding for spacing between words */
+    padding: 20px 20px; /* Add padding for spacing between words */
   }
 }
 
@@ -82,6 +82,6 @@
     display: inline-block; /* Ensure each nav item is on its own line */
     font-size: 48px;
     margin: 0; /* Reset margin */
-    padding: 25px 60px; /* Add padding for spacing between words */
+    padding: 25px 50px; /* Add padding for spacing between words */
   }
 }

@@ -32,10 +32,14 @@ li {
     box-sizing: border-box; /* Ensure padding is included in the width */
   }
   li {
-    font-size: 24px;
+    font-size: 32px;
+    padding: 2px;
   }
-  .inputboxes{
-    font-size: large;
+  .nav-item {
+    font-size: 28px;
+  }
+  button {
+    font-size: 28px;
   }
 }
 
