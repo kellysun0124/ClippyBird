@@ -16,7 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Phone media queries */
 @media screen and (min-width: 360px) and (max-width: 800px){
-  .mat-card{
+  .title {
     font-size: 18px;
   }
   p {
@@ -25,12 +25,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-align: center;
     padding: 25px;
     box-sizing: border-box; /* Ensure padding is included in the width */
+    line-height: -9px;
   }
 }
 
 /* Tablet media queries */
 @media screen and (min-width: 768px) and (max-width: 1024px){
-
+  h1 {
+    font-size: 36px;
+  }
+  p{
+    font-size: 36px;
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
 }
 
 /* Desktop media queries */
