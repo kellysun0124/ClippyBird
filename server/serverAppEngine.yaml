@@ -1,0 +1,4 @@
+runtime: nodejs20
+service: server
+env_variables:
+  CB_DB_SOCKET: "/cloudsql/silken-psyche-419819:us-central1:clippybird-sql"

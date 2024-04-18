@@ -12,7 +12,7 @@ import insertRoute from './routes/insert.js';
 dotenv.config()
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
@@ -26,12 +26,19 @@ app.use(session({
 }));
 
 // Create MySQL connection pool
-const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST,
+let dbConfig = {
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
-});
+    database: process.env.MYSQL_DATABASE,
+};
+
+if(process.env.NODE_ENV == "production") {
+    dbConfig.socketPath = process.env.CB_DB_SOCKET;
+} else {
+    dbConfig.host = process.env.MYSQL_HOST;
+}
+
+const pool = mysql.createPool(dbConfig)
 
 // Define getConnection function
 export const getConnection = async () => {
