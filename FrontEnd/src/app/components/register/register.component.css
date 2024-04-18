@@ -20,14 +20,25 @@ li {
   align-content: center;
 }
 
-
-
-
-
-
-/* we need to make one for each screen size we want
-so we might need to play around here and see what looks good*/
-@media screen and (max-width: 480px) {
-
-
+@media screen and (min-width: 768px) and (max-width: 1366px){
+  .title {
+    font-size: 48px;
+  }
+  p {
+    font-size: 20px;
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  li {
+    font-size: 32px;
+    padding: 2px;
+  }
+  .nav-item {
+    font-size: 28px;
+  }
+  button {
+    font-size: 28px;
+  }
 }

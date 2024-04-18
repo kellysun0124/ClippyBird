@@ -14,25 +14,60 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #e28743;
 }
 
-/* Phone media queries */
-@media screen and (min-width: 360px) and (max-width: 800px){
-  .mat-card{
-    font-size: 15px;
+/*Smallest media queries*/
+@media screen and (max-width: 640px){
+  .title {
+    font-size: 12px;
   }
-  p{
+  p {
+    font-size: 14px;
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+}
+
+/* Phone media queries */
+@media screen and (min-width: 360px) and (max-width: 640px){
+  .title {
+    font-size: 18px;
+  }
+  p {
     font-size: 20px;
-    width: 100%;
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
   }
 }
 
 /* Tablet media queries */
-@media screen and (min-width: 768px) and (max-width: 1024px){
-
+@media screen and (min-width: 768px) and (max-width: 1366px){
+  .title {
+    font-size: 36px;
+  }
+  p{
+    font-size: 36px;
+    line-height: 1.5; /* Adjust line spacing as needed */
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
 }
 
 /* Desktop media queries */
 @media screen and (min-width: 1080px) and (max-width: 1920px){
-
+  .title {
+    font-size: 36px;
+  }
+  p{
+    font-size: 48px;
+    line-height: 1.5; /* Adjust line spacing as needed */
+    max-width: 100%; /* Limit width to the screen width */
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
 }
-
-
