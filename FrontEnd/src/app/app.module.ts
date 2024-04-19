@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,8 +35,8 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     FormsModule,
     MatCardModule,
-    MatButtonModule
-
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),

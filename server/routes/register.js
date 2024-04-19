@@ -4,7 +4,7 @@ import { getConnection } from '../server.js';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const { userId, firstName, lastName, email, phone, password } = req.body;
 
     if (!firstName || !lastName || !userId || !email || !password) {
