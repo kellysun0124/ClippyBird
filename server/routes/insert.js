@@ -83,7 +83,7 @@ router.post("/:USER_ID", async (req, res) => {
         });
     } catch (error) {
         console.error("Error creating image: ", error);
-        res.status(500).json({ error: "Internal Server Error"});
+        return res.status(500).json({ error: "Internal Server Error"});
     }
 });
 
