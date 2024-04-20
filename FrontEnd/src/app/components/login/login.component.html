@@ -4,18 +4,21 @@
   <form (ngSubmit)="submitLogin()">
     <ul style="list-style-type:none;">
       <li>Username</li>
-      <li>  <input type="text" name="username" [(ngModel)]="username" id="Username">    </li>
+      <li><input type="text" name="username" [(ngModel)]="username" id="Username"></li>
       <br>
       <li>Password</li>
-      <li>  <input type="password" name="password" [(ngModel)]="password" id="Password">    </li>
+      <li><input type="password" name="password" [(ngModel)]="password" id="Password"></li>
       <br>
-      <li id="loginandreg">  <button type="submit">Login</button>
+      <li id="loginandreg">
+        <button type="submit">Login</button>
         <a class="nav-item nav-link custom-link" routerLink="/register">Don't have an account? Register here!</a>
       </li>
     </ul>
   </form>
 
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </mat-card>
+
 
 
 
