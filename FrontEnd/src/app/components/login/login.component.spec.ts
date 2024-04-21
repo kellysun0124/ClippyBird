@@ -1,23 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
 
-import { LoginComponent } from './login.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent {
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LoginComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor(private userService: UserService) {}
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  submitLogin() {
+    this.userService.login(this.username, this.password)
+      .subscribe(
+        () => {
+          // Successful login, redirect or perform other actions
+        },
+        error => {
+          this.errorMessage = error.message;
+        }
+      );
+  }
+}
+

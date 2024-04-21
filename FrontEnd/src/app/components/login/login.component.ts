@@ -1,4 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +13,17 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  submitLogin() {
-    // Handle login info submission
-    console.log('Username:', this.username);
-    console.log('Username:', this.username);
+  constructor(private authService: AuthService, private router: Router) {}
 
-    //send data to server and verify login info with backend
+  submitLogin() {
+    this.authService.login(this.username, this.password).subscribe((response) => {
+      if (response.message == "User successfully logged in") {
+        this.router.navigate(['/user-birds']);
+        this.authService.saveLoggedInUser(this.username);
+        console.log(response.message);
+      } else {
+        console.error('Login failed:', response.message);
+      }
+    });
   }
 }
