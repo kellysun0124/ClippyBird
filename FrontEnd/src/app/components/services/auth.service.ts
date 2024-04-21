@@ -14,4 +14,12 @@ export class AuthService {
     const userData = { userId: username, password: password };
     return this.http.post<any>('http://localhost:3001/login', userData);
   }
+
+  saveLoggedInUser(user: any) {
+    this.loggedInUser = user;
+  }
+
+  getLoggedInUser() {
+    return this.loggedInUser;
+  }
 }
