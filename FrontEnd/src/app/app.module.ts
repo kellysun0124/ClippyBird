@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     InstructionsComponent,
     UserBirdsComponent,
-    HomeComponent
+    HomeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
