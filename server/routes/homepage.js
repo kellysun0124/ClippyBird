@@ -1,8 +1,12 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import mysql from 'mysql2/promise'
+import { Storage } from '@google-cloud/storage';
 
+const storage = new Storage({ keyFilename: './key.json' });
+const bucketName = 'clippy_bird-1';
 const router = express.Router()
+
 dotenv.config()
 
 const pool = mysql.createPool({
@@ -18,11 +22,6 @@ const pool = mysql.createPool({
 const readUsersImagesQuery = `
     SELECT * FROM IMAGE
     WHERE USER_ID = ?;
-`
-
-const createImageQuery = `
-    INSERT INTO IMAGE (USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
-    VALUES (?, ?, ?, ?, ?, ?);
 `
 
 const updateImageNameQuery = `
@@ -57,32 +56,21 @@ router.get("/:USER_ID", async (req, res) => {
         const connection = await pool.getConnection();
         const [rows] = await connection.query(readUsersImagesQuery, [USER_ID]);
         connection.release();
-        res.json(rows);
+
+        const imagesWithUrlsPromises = rows.map(async (image) => {
+            const file = storage.bucket(bucketName).file(image.IMAGE_NAME);
+            const [signedUrl] = await file.getSignedUrl({
+                action: 'read',
+                expires: Date.now() + 1 * 60 * 1000, // 1 minute
+            });
+            return { ...image, SIGNED_URL: signedUrl };
+        });
+
+        const imagesWithUrls = await Promise.all(imagesWithUrlsPromises);
+
+        res.json(imagesWithUrls);
     } catch (error) {
         console.error("Error retrieving images: ", error);
-        res.status(500).json({ error: "Internal Server Error"});
-    }
-});
-
-// create an image
-// -> homepage/username
-router.post("/:USER_ID", async (req, res) => {
-    const { USER_ID } = req.params;
-    const { FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES } = req.body;
-    
-    try {
-        const connection = await pool.getConnection();
-        const [result] = await connection.query(
-            createImageQuery,
-            [USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
-        );
-        connection.release();
-        res.status(201).json({
-            message: "Image created successfully",
-            imageId: result.insertId
-        });
-    } catch (error) {
-        console.error("Error creating image: ", error);
         res.status(500).json({ error: "Internal Server Error"});
     }
 });

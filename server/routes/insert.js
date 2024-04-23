@@ -4,6 +4,10 @@ import { getConnection } from '../server.js'
 import path from 'path'
 //import * as tf from '@tensorflow/tfjs' 
 import * as tfn from '@tensorflow/tfjs-node'
+import { Storage } from '@google-cloud/storage';
+
+const storage = new Storage({ keyFilename: './key.json' });
+const bucketName = 'clippy_bird-1';
 
 const router = express.Router()
 
@@ -12,7 +16,7 @@ const model_path = "/Users/kevin/Documents/college/sp24/capstone/codebase/Clippy
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createImageQuery = `
-    INSERT INTO IMAGE (USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
+    INSERT INTO IMAGE (USER_ID, GCS_OBJECT_URL, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
     VALUES (?, ?, ?, ?, ?, ?);
 `
 
@@ -26,7 +30,7 @@ const userExistsQuery = `
 // -> insert/{username}
 router.post("/:USER_ID", async (req, res) => {
     const { USER_ID } = req.params;
-    const { FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME } = req.body;
+    const { GCS_OBJECT_URL, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME } = req.body;
     
     try {
         let SPECIES = "";
@@ -44,11 +48,12 @@ router.post("/:USER_ID", async (req, res) => {
             return model;
         }
 
-        async function classifyImage(model, directory, image_name) {
-            const fileLocation = path.join(directory, image_name); // gets path to the image
-            const imageBuffer = fs.readFileSync(fileLocation);
-            const image = tfn.node.decodeImage(imageBuffer);
-            const resizedImage = tfn.image.resizeBilinear(image, [224, 224]); // resizes to proper size of 224, 224, 3
+        async function classifyImage(model, image_name) {
+            const bucket = storage.bucket(bucketName);
+            const file = bucket.file(IMAGE_NAME);
+            const imageBuffer = await file.download();
+            const tensorImage = tfn.node.decodeImage(imageBuffer[0]);
+            const resizedImage = tfn.image.resizeBilinear(tensorImage, [224, 224]); // resizes to proper size of 224, 224, 3
             const normalizedImage = resizedImage.toFloat().div(tfn.scalar(255));
             const reshapedImage = normalizedImage.expandDims(0);
             const prediction = await model.predict(reshapedImage).dataSync()[0];
@@ -58,7 +63,7 @@ router.post("/:USER_ID", async (req, res) => {
 
         const model = await loadModel();
 
-        const prediction = await classifyImage(model, FILE_LOCATION, IMAGE_NAME);
+        const prediction = await classifyImage(model, IMAGE_NAME);
 
         if (prediction >= 0.5) {
             SPECIES = "Bird"
@@ -72,7 +77,7 @@ router.post("/:USER_ID", async (req, res) => {
         const connection = await getConnection();
         const [result] = await connection.execute(
             createImageQuery,
-            [USER_ID, FILE_LOCATION, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
+            [USER_ID, GCS_OBJECT_URL, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES]
         );
         connection.release();
 
