@@ -11,9 +11,7 @@ const bucketName = 'clippy_bird-1';
 
 const router = express.Router()
 
-//////////////////////////////////// !!! WILL NEED TO CHANGE ONCE HOSTED!!! ///////////////////////////////////////
-const model_path = "/Users/kevin/Documents/college/sp24/capstone/codebase/ClippyBird/server/js_model/model.json" //
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const bin_model_path = "./js_models/binary_model/model.json"
 
 const createImageQuery = `
     INSERT INTO IMAGE (USER_ID, GCS_OBJECT_URL, DATE_TIME, IMAGE_LOCATION, IMAGE_NAME, SPECIES) 
@@ -42,7 +40,7 @@ router.post("/:USER_ID", async (req, res) => {
             });
         }
 
-        async function loadModel() {
+        async function loadModel(model_path) {
             const handler = tfn.io.fileSystem(model_path);
             const model = await tfn.loadLayersModel(handler);
             return model;
@@ -61,17 +59,27 @@ router.post("/:USER_ID", async (req, res) => {
             return prediction;
         }
 
-        const model = await loadModel();
+        const bin_model = await loadModel(bin_model_path);
 
-        const prediction = await classifyImage(model, IMAGE_NAME);
+        const bin_prediction = await classifyImage(bin_model, IMAGE_NAME);
 
-        if (prediction >= 0.5) {
+        if (bin_prediction >= 0.5) {
             SPECIES = "Bird"
         } else {
             return res.status(422).json({
                 message: "Image does not contain a bird"
             })
         }
+
+        const mult_prediction = await classifyImage(model, IMAGE_NAME);
+
+        // if (bin_prediction >= 0.5) {
+        //     SPECIES = "Bird"
+        // } else {
+        //     return res.status(422).json({
+        //         message: "Image does not contain a bird"
+        //     })
+        // }
 
         // opens connection to the database, inserts image, then releases connection
         const connection = await getConnection();
