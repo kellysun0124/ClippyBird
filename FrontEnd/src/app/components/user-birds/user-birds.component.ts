@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
 
 interface Image {
   DATE_TIME: string;
-  FILE_LOCATION: string;
+  GCS_OBJECT_URL: string;
   IMAGE_ID: string;
   IMAGE_LOCATION: string;
   IMAGE_NAME: string;
   SPECIES: string;
   USER_ID: string;
+  SIGNED_URL: string;
 }
 
 @Component({
@@ -38,6 +39,7 @@ export class UserBirdsComponent {
   }
 
   getImageUrl(image: Image): string {
-    return `${image.FILE_LOCATION}${image.IMAGE_NAME}`
+    console.log(`${image.GCS_OBJECT_URL}/${image.IMAGE_NAME}`)
+    return image.SIGNED_URL;
   }
 }
