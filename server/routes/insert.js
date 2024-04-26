@@ -4,7 +4,7 @@ import * as tfn from '@tensorflow/tfjs-node'
 import { Storage } from '@google-cloud/storage';
 
 const storage = new Storage({ keyFilename: './key.json' });
-const bucketName = 'clippy_bird-1';
+const bucketName = 'clippy_bird-2';
 
 const router = express.Router()
 
