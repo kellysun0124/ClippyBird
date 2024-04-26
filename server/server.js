@@ -8,6 +8,9 @@ import loginRoute from './routes/login.js';
 import usersRoute from './routes/users.js';
 import homepageRoute from './routes/homepage.js';
 import insertRoute from './routes/insert.js';
+import path from 'path';
+
+const __dirname = path.resolve();
 
 dotenv.config()
 
@@ -27,22 +30,23 @@ app.use(session({
 
 // Create MySQL connection pool
 let dbConfig = {
-    // user: process.env.MYSQL_USER,
-    // password: process.env.MYSQL_PASSWORD,
-    // database: process.env.MYSQL_DATABASE,
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 };
 
-if(process.env.NODE_ENV == "production") {
-    dbConfig.socketPath = process.env.CB_DB_SOCKET;
-    dbConfig.user = process.env.CB_DB_USER;
-    dbConfig.password = process.env.CB_DB_PASSWORD;
-    dbConfig.database = process.env.CB_DB_DATABASE;
-} else {
-    dbConfig.host = process.env.MYSQL_HOST;
-    dbConfig.user = process.env.MYSQL_USER;
-    dbConfig.password = process.env.MYSQL_PASSWORD;
-    dbConfig.database = process.env.MYSQL_DATABASE;
-}
+// if(process.env.NODE_ENV == "production") {
+//     dbConfig.socketPath = process.env.CB_DB_SOCKET;
+//     dbConfig.user = process.env.CB_DB_USER;
+//     dbConfig.password = process.env.CB_DB_PASSWORD;
+//     dbConfig.database = process.env.CB_DB_DATABASE;
+// } else {
+//     dbConfig.host = process.env.MYSQL_HOST;
+//     dbConfig.user = process.env.MYSQL_USER;
+//     dbConfig.password = process.env.MYSQL_PASSWORD;
+//     dbConfig.database = process.env.MYSQL_DATABASE;
+// }
 
 const pool = mysql.createPool(dbConfig)
 
@@ -72,17 +76,14 @@ app.use(async (req, res, next) => {
     }
 });
 
-// Routes
+app.use(express.static(path.join(__dirname, 'dist/front-end/browser')));
+
+// Routess
 app.use('/api/register', registerRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/homepage', homepageRoute);
 app.use('/api/insert', insertRoute);
-
-// Route handler for the root URL
-// app.get('/', (req, res) => {
-//     res.redirect('/register'); // Redirect to the registration page
-// });
 
 // Start server
 app.listen(port, () => {

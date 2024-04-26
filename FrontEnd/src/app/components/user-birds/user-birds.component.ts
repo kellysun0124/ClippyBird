@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface Image {
   DATE_TIME: string;
@@ -26,7 +27,7 @@ export class UserBirdsComponent {
   ngOnInit() {
     const loggedInUser = this.authService.getLoggedInUser();
     if (loggedInUser) {
-      this.http.get<Image[]>(`http://localhost:3001/api/homepage/${loggedInUser}`).subscribe(
+      this.http.get<Image[]>(`${environment.apiUrl}/api/homepage/${loggedInUser}`).subscribe(
         (response) => {
           this.userImages = response;
           console.log(this.userImages)

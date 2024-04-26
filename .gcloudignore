@@ -2,3 +2,5 @@ DB/
 model/
 login.js
 register.js
+FrontEnd/
+.git/

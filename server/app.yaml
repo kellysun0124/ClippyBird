@@ -1,0 +1,14 @@
+runtime: nodejs20
+service: default
+env_variables:
+  PORT: 3001
+  CB_DB_SOCKET: '/cloudsql/alien-scope-421502:us-central1:clippybird-sql'
+  CB_DB_USER: 'root'
+  CB_DB_PASSWORD: 'a7wbc11'
+  CB_DB_DATABASE: 'clippy_bird'
+  NODE_ENV: 'production'
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
