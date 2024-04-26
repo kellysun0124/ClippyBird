@@ -12,7 +12,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     const userData = { userId: username, password: password };
-    return this.http.post<any>('http://localhost:3001/login', userData);
+    return this.http.post<any>('http://localhost:3001/api/login', userData);
   }
 
   saveLoggedInUser(user: any) {

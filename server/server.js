@@ -27,15 +27,21 @@ app.use(session({
 
 // Create MySQL connection pool
 let dbConfig = {
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+    // user: process.env.MYSQL_USER,
+    // password: process.env.MYSQL_PASSWORD,
+    // database: process.env.MYSQL_DATABASE,
 };
 
 if(process.env.NODE_ENV == "production") {
     dbConfig.socketPath = process.env.CB_DB_SOCKET;
+    dbConfig.user = process.env.CB_DB_USER;
+    dbConfig.password = process.env.CB_DB_PASSWORD;
+    dbConfig.database = process.env.CB_DB_DATABASE;
 } else {
     dbConfig.host = process.env.MYSQL_HOST;
+    dbConfig.user = process.env.MYSQL_USER;
+    dbConfig.password = process.env.MYSQL_PASSWORD;
+    dbConfig.database = process.env.MYSQL_DATABASE;
 }
 
 const pool = mysql.createPool(dbConfig)
@@ -67,11 +73,11 @@ app.use(async (req, res, next) => {
 });
 
 // Routes
-app.use('/register', registerRoute);
-app.use('/login', loginRoute);
-app.use('/users', usersRoute);
-app.use('/homepage', homepageRoute);
-app.use('/insert', insertRoute);
+app.use('/api/register', registerRoute);
+app.use('/api/login', loginRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/homepage', homepageRoute);
+app.use('/api/insert', insertRoute);
 
 // Route handler for the root URL
 // app.get('/', (req, res) => {

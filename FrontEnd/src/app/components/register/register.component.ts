@@ -26,7 +26,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post<any>('http://localhost:3001/register', userData).subscribe({
+    this.http.post<any>('http://localhost:3001/api/register', userData).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
       },

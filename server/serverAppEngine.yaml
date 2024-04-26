@@ -1,4 +1,9 @@
 runtime: nodejs20
 service: server
 env_variables:
-  CB_DB_SOCKET: "/cloudsql/silken-psyche-419819:us-central1:clippybird-sql"
+  PORT: 3001
+  CB_DB_SOCKET: '/cloudsql/silken-psyche-419819:us-central1:clippybird-sql'
+  CB_DB_USER: 'root'
+  CB_DB_PASSWORD: 'placeholder'
+  CB_DB_DATABASE: 'clippy_bird'
+  NODE_ENV: 'production'

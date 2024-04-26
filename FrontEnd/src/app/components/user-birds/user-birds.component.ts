@@ -26,7 +26,7 @@ export class UserBirdsComponent {
   ngOnInit() {
     const loggedInUser = this.authService.getLoggedInUser();
     if (loggedInUser) {
-      this.http.get<Image[]>(`http://localhost:3001/homepage/${loggedInUser}`).subscribe(
+      this.http.get<Image[]>(`http://localhost:3001/api/homepage/${loggedInUser}`).subscribe(
         (response) => {
           this.userImages = response;
           console.log(this.userImages)
