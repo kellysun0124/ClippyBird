@@ -31,8 +31,28 @@ li {
   .nav-item {
     font-size: 26px;
   }
-  button {
-    font-size: 28px;
+
+  form ul {
+    list-style-type: none;
+    padding: 5px;
+    text-align: center;
   }
+
+  form ul li {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .yes {
+    font-size: 28px;
+    margin-left: 110px;
+  }
+
+  .no{
+    font-size: 28px;
+    margin-right: 130px;
+  }
+
 }
 
