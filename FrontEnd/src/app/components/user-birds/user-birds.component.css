@@ -3,3 +3,9 @@
     height: 224px;
   }
 
+  @media screen and (min-width: 1080px) and (max-width: 1920px){
+    .title {
+      font-size: 42px;
+      padding: 60px;
+    }
+  }
