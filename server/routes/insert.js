@@ -3,12 +3,15 @@ import fs from 'fs';
 import { getConnection } from '../server.js'
 import path from 'path'
 //import * as tf from '@tensorflow/tfjs' 
-import * as tfn from '@tensorflow/tfjs-node'
+//import * as tfn from '@tensorflow/tfjs-node'
+
 
 const router = express.Router()
 
 //////////////////////////////////// !!! WILL NEED TO CHANGE ONCE HOSTED!!! ///////////////////////////////////////
-const model_path = "/Users/kevin/Documents/college/sp24/capstone/codebase/ClippyBird/server/js_model/model.json" //
+//const model_path = "/Users/kevin/Documents/college/sp24/capstone/codebase/ClippyBird/server/js_model/model.json" //
+const model_path = "/Users/kellysun/Desktop/Spring 2024/Capstone/ClippyBird/server/js_model/model.json" //
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const createImageQuery = `
