@@ -1,5 +1,13 @@
+<h1 class="title">Logout</h1>
+
 <form (ngSubmit)="logout()">
-    <button type="submit">
-        Logout
-    </button>
+  <mat-card class="mat-card">
+    <ul>
+      <li>Are you sure you want to logout?</li>
+      <li>
+        <button type="submit" class="yes">Yes</button>
+        <button type="button" class="no" routerLink="/user-birds">No</button>
+      </li>
+    </ul>
+  </mat-card>
 </form>

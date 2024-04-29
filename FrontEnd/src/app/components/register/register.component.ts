@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post<any>('http://localhost:3001/register', userData).subscribe({
+    this.http.post<any>(`${environment.apiUrl}/api/register`, userData).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
       },

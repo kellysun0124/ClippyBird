@@ -48,7 +48,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 36px;
   }
   p{
-    font-size: 36px;
+    font-size: 34px;
     line-height: 1.5; /* Adjust line spacing as needed */
     max-width: 100%; /* Limit width to the screen width */
     text-align: center;
@@ -60,10 +60,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Desktop media queries */
 @media screen and (min-width: 1080px) and (max-width: 1920px){
   .title {
-    font-size: 36px;
+    font-size: 42px;
   }
   p{
-    font-size: 48px;
+    font-size: 38px;
     line-height: 1.5; /* Adjust line spacing as needed */
     max-width: 100%; /* Limit width to the screen width */
     text-align: center;
