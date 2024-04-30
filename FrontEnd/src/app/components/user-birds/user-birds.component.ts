@@ -21,7 +21,7 @@ interface Image {
 })
 export class UserBirdsComponent {
   userImages: Image[] = [];
-  
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {

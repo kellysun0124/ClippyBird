@@ -1,6 +1,7 @@
-<h1 class="title">Users' Birds</h1>
+<h1 class="title">Birds</h1>
 
 <div *ngFor="let image of userImages">
+  <mat-card class="mat-card">
     <div>
         {{image.DATE_TIME}}
     </div>
@@ -13,5 +14,7 @@
     <div>
         {{image.IMAGE_LOCATION}}, {{image.SPECIES}}
     </div>
+  </mat-card>
 </div>
-  
+
+
