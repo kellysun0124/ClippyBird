@@ -3,7 +3,13 @@
     height: 224px;
     max-width: 100%;
     height: auto;
+
   }
+
+  @keyframes scroll {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
 
   @media screen and (min-width: 1080px) and (max-width: 1920px){
     .title {
