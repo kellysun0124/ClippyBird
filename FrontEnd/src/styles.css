@@ -2,7 +2,11 @@
 html, body {
   height: 100%;
   background-color:#005365; /* For browsers that do not support gradients */
+  /* background-image: linear-gradient(#005365, #abdbe3, #005365); */
+  /* background-image: linear-gradient(red, yellow, green); */
   background-image: linear-gradient(#005365, #abdbe3, #005365);
+
+
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
