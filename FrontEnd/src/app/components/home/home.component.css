@@ -9,6 +9,11 @@ p{
   color: #eab676
  }
 
+ html, body {
+  height: 100%;
+  background-color:#005365; /* For browsers that do not support gradients */
+  background-image: linear-gradient(#005365, #1cb6d1, #005365);
+}
 
  /* Desktop media queries */
 @media screen and (min-width: 1080px) and (max-width: 1920px){
