@@ -1,6 +1,6 @@
 .resized-image {
-    width: 224px;
-    height: 224px;
+    width: 300px;
+    height: 300px;
     max-width: 100%;
     height: auto;
 
@@ -12,6 +12,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .border-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    width: 50%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgba(231, 231, 231, 0.426), transparent);
   }
 
   @keyframes scroll {
