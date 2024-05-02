@@ -1,35 +1,23 @@
-<h1 class="title">Login</h1>
 
-<mat-card class="mat-card">
-  <form (ngSubmit)="submitLogin()">
-    <ul style="list-style-type:none;">
-      <li>Username</li>
-      <li><input type="text" name="username" [(ngModel)]="username" id="Username"></li>
-      <br>
-      <li>Password</li>
-      <li><input type="password" name="password" [(ngModel)]="password" id="Password"></li>
-      <br>
-      <li id="loginandreg">
-        <button type="submit">Login</button>
-        <a class="nav-item nav-link custom-link" routerLink="/register">Don't have an account? Register here!</a>
+
+<div class="m-5 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md">
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Login</h1>
+  <form (ngSubmit)="submitLogin()" class="px-8 py-8">
+    <ul class="space-y-4">
+      <li>
+        <label for="Username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" name="username" [(ngModel)]="username" id="Username" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40">
+      </li>
+
+      <li>
+        <label for="Password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" name="password" [(ngModel)]="password" id="Password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-blue-500 focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40">
+      </li>
+
+      <li class="flex items-center justify-between">
+        <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:bg-blue-700">Login</button>
+        <a routerLink="/register" class="text-sm text-blue-500 hover:underline">Don't have an account? Register here!</a>
       </li>
     </ul>
   </form>
-
-  <!-- <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> -->
-</mat-card>
-
-
-
-
-
-
-<!-- <mat-card>
-  <mat-card-content>
-    <textarea matInput [(ngModel)]="username" id="username"></textarea>
-    <textarea matInput [(ngModel)]="password" id="password"></textarea>
-
-    <button mat-raised-button color="primary" (click)="submitLogin()" id="submitbutton">Submit</button>
-  </mat-card-content>
-
-</mat-card>> -->
+</div>

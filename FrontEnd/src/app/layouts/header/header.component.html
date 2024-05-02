@@ -1,25 +1,22 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
-    <a class="nav-link" routerLink="/">
-      <span class="nav-item">Home</span>
+<nav class="bg-blue-500">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="assets/images/ClippyBirdLogo.png" alt="Landscape" class="h-20">
     </a>
-    <a class="nav-link" routerLink="/instructions">
-      <span class="nav-item">Instructions</span>
-    </a>
-    <a class="nav-link" routerLink="/login">
-      <span class="nav-item">Login</span>
-    </a>
-    <a class="nav-link" routerLink="/register">
-      <span class="nav-item">Register</span>
-    </a>
-    <!-- <a class="nav-link" routerLink="/user-birds">
-      <span class="nav-item">Birds</span>
-    </a> -->
-    <a class="nav-link" routerLink="/logout">
-      <span class="nav-item">Logout</span>
-    </a>
-  </div>
-  <div class="navbar-actions">
-    <!-- Add login/logout buttons or user-related actions here -->
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-blue-500">
+        <li><a routerLink="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-700" aria-current="page">Home</a></li>
+        <li><a routerLink="/instructions" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Instructions</a></li>
+        <li><a routerLink="/login" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a></li>
+        <li><a routerLink="/register" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Register</a></li>
+        <li><a routerLink="/feeder-activity" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Feeder Activity</a></li>
+        <li><a routerLink="/logout" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

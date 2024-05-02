@@ -1,21 +1,19 @@
-<h1 class="title">Birds</h1>
+<h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Birds</h1>
 
-<div *ngFor="let image of userImages">
-  <mat-card class="mat-card">
-    <div>
-        {{image.DATE_TIME}}
+<div *ngFor="let image of userImages" class="max-w-md mx-auto my-4 overflow-hidden bg-white rounded-lg shadow-md">
+  <mat-card class="p-4">
+    <div class="text-gray-600">
+        {{ image.DATE_TIME }}
     </div>
-    <div>
-        {{image.IMAGE_NAME}}
+    <div class="text-lg text-gray-800 font-semibold">
+        {{ image.IMAGE_NAME }}
     </div>
-    <div>
-        <img [src]=getImageUrl(image) alt="{{image.IMAGE_NAME}}" class="resized-image">
+    <div class="my-3">
+        <img [src]="getImageUrl(image)" alt="{{ image.IMAGE_NAME }}" class="w-full h-auto object-cover rounded-lg">
     </div>
-    <div>
-        {{image.IMAGE_LOCATION}}, {{image.SPECIES}}
+    <div class="text-gray-700">
+        {{ image.IMAGE_LOCATION }}, {{ image.SPECIES }}
     </div>
-    <div class="border-line"></div>
+    <hr class="my-2">
   </mat-card>
 </div>
-
-
