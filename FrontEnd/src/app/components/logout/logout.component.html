@@ -1,13 +1,16 @@
-<h1 class="title">Logout</h1>
-
-<form (ngSubmit)="logout()">
-  <mat-card class="mat-card">
-    <ul>
-      <li>Are you sure you want to logout?</li>
-      <li>
-        <button type="submit" class="yes">Yes</button>
-        <button type="button" class="no" routerLink="/user-birds">No</button>
-      </li>
-    </ul>
-  </mat-card>
-</form>
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-md">
+      <h1 class="text-3xl font-bold text-gray-800 text-center">Logout</h1>
+      <form (ngSubmit)="logout()" class="mt-4">
+          <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+              <ul class="space-y-2">
+                  <li className="text-xl">Are you sure you want to logout?</li>
+                  <li class="flex justify-between items-center pt-4">
+                      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Yes</button>
+                      <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" routerLink="/user-birds">No</button>
+                  </li>
+              </ul>
+          </div>
+      </form>
+  </div>
+</div>
